@@ -1,0 +1,23 @@
+h1 {
+    font-size: 60px;
+}
+p {
+    font-size: large;
+}
+
+fieldset {
+    width: 300px;
+    text-align: center;
+}
+
+fieldset fieldset {
+    margin: auto;
+}
+
+body {
+    background-color: grey;
+}
+img {
+    width: 375px; 
+    height: auto;
+}

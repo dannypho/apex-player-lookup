@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>Apex Legends Player Stats</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <fieldset>
+            <h1>Welcome</h1>
+            <p>
+            This application displays various statistics of the searched user
+            </p>
+            <h2>How to Use:</h2>
+            <ol>
+                <li>Enter the user's EA ID in the search bar</li>
+                <li>Select the user's platform</li>
+                <li>Click the search button</li>
+            </ol>
+            <form action="/search" method="get">
+                <input type="text" name="ea_id" placeholder="Enter EA ID">
+                <button>Search</button>
+                <fieldset>
+
+                    <legend>Select platform</legend>
+
+                    <input type="radio" name="platform" id="PC" value="PC">
+                    <label for="PC">PC</label>
+
+                    <input type="radio" name="platform" id="PS4" value="PS4">
+                    <label for="PS4">PS4</label>
+
+                    <input type="radio" name="platform" id="Xbox" value="Xbox">
+                    <label for="Xbox">Xbox</label>
+
+                </fieldset>
+            </form>
+            <img src="https://cdn.freebiesupply.com/images/large/2x/apex-legends-logo-png-transparent.png" alt="Apex Legends logo">
+        </fieldset>
+        {% block body %}{% endblock %}
+    </body>
+</html>
