@@ -19,21 +19,18 @@
                 <li>Click the search button</li>
             </ol>
             <form action="/search" method="get">
-                <input type="text" name="ea_id" placeholder="Enter EA ID">
+                <input type="text" id="ea_id" name="ea_id" value="{{ea_id | default('') }}" placeholder="Enter EA ID">
                 <button>Search</button>
                 <fieldset>
 
                     <legend>Select platform</legend>
 
-                    <input type="radio" name="platform" id="PC" value="PC">
-                    <label for="PC">PC</label>
+                    {% for platform in platforms %}
 
-                    <input type="radio" name="platform" id="PS4" value="PS4">
-                    <label for="PS4">PS4</label>
+                        <input type="radio" name="platform" id="{{ platform }}" value="{{ platform }}"{% if selected_platform == platform%}checked{% endif %}>
+                        <label for="{{ platform }}">{{ platform }}</label>
 
-                    <input type="radio" name="platform" id="Xbox" value="Xbox">
-                    <label for="Xbox">Xbox</label>
-
+                    {% endfor %}
                 </fieldset>
             </form>
             <img src="https://cdn.freebiesupply.com/images/large/2x/apex-legends-logo-png-transparent.png" alt="Apex Legends logo">

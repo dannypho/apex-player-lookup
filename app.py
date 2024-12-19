@@ -2,15 +2,25 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+PLATFORMS = ["PC", "PS4", "Xbox"]
+
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", platforms=PLATFORMS)
 
 @app.route("/search")
 def search():
-    ea_id = request.args.get("ea_id", "User not found")
+    ea_id = request.args.get("ea_id", )
     platform = request.args.get("platform")
-    return render_template("search.html", ea_id=ea_id, platform=platform)
+
+    if not ea_id and platform is not None:
+        return render_template("error.html", platforms=PLATFORMS, invalid_input=True, selected_platform=platform)
+    elif not ea_id:
+        return render_template("error.html", platforms=PLATFORMS, invalid_input=True)
+    elif platform is None:
+        return render_template("error.html", platforms=PLATFORMS, ea_id=ea_id, invalid_button=True)
+
+    return render_template("search.html", platforms=PLATFORMS, ea_id=ea_id, selected_platform=platform)
 
 if __name__ == "__main__":
     app.run(debug=True)

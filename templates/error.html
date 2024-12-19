@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block body %}
+
+    {% if invalid_input %}
+
+        Please enter a valid EA ID
+
+    {% endif %}
+
+    {% if invalid_button %}
+    
+        Please select a platform
+
+    {% endif %}
+
+{% endblock %}
