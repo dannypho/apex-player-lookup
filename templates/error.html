@@ -4,20 +4,40 @@
 
     {% if invalid_input %}
 
+        <div class="footer">
 
-        <div>Please enter a valid EA ID</div>
+            <fieldset class="card, error">
+                <div>Error</div>
+                <div>Please enter a valid EA ID</div>
+            </fieldset>
+
+        </div>
 
     {% endif %}
 
     {% if invalid_button %}
-    
-        <div>Please select a platform</div>
+
+        <div class="footer">
+
+            <fieldset class="card, error">
+                <div>Error</div>
+                <div>Please select a platform</div>
+            </fieldset>
+
+        </div>
 
     {% endif %}
 
     {% if invalid_user %}
+        
+        <div class="footer">
 
-        <div>User does not exist</div>
+            <fieldset class="card, error">
+                <div>Error</div>
+                <div>User does not exist</div>
+            </fieldset>
+
+        </div>
 
     {% endif %}
 

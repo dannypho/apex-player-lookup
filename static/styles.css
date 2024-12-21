@@ -10,7 +10,7 @@ fieldset {
     text-align: center;
 }
 
-fieldset fieldset {
+.inner_fieldset{
     margin: auto;
 }
 
@@ -22,25 +22,34 @@ body {
     background-color: dimgrey;
     border-color: black;
     display: inline-block;
+    vertical-align: top;
 }
 
 .welcome_img {
     width: 375px; 
-    height: auto;
 }
 
 .banner {
-    height: 200px;
+    height: 185px;
     width: 1455px;
     object-fit: cover;
-    vertical-align: top;
 }
 
 .success {
     background-color: green;
     border-color: black;
     width: 375px;
-    display: inline-block;
-    height: auto;
+    height: 166px;
 }
 
+.error {
+    background-color: red;
+    border-color: black;
+    width: 375px;
+    height: 166px;
+}
+
+.footer {
+    display: flex; 
+    flex-direction: row;
+}

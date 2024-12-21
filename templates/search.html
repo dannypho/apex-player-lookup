@@ -2,13 +2,6 @@
 
 {% block body %}
 
-    <img class="banner" src="https://api.mozambiquehe.re/assets/banners/pathfinder.jpg">
-
-    <fieldset class="card, success">
-        <div>Success</div>
-        <div>User: {{ ea_id }} on {{ selected_platform }}</div>
-    </fieldset>
-
     <fieldset class="card">
 
         {% for key, value in player_info.items() %}
@@ -66,5 +59,16 @@
         {% endfor %}
 
     </fieldset>
+    
+    <div class="footer">
+
+        <fieldset class="card, success">
+            <div>Success</div>
+            <div>User: {{ ea_id }} on {{ selected_platform }}</div>
+        </fieldset>
+    
+        <img class="banner" src="https://api.mozambiquehe.re/assets/banners/pathfinder.jpg">
+
+    </div>
 
 {% endblock %}
