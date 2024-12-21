@@ -2,6 +2,69 @@
 
 {% block body %}
 
-    User: {{ ea_id }} on platform {{ selected_platform }}
+    <img class="banner" src="https://api.mozambiquehe.re/assets/banners/pathfinder.jpg">
+
+    <fieldset class="card, success">
+        <div>Success</div>
+        <div>User: {{ ea_id }} on {{ selected_platform }}</div>
+    </fieldset>
+
+    <fieldset class="card">
+
+        {% for key, value in player_info.items() %}
+        
+            {% if key == 'rankImg' %}
+
+                <img src="{{ value }}" alt="Player's Rank">
+
+            {% elif key == 'rank' %}
+
+                <div>Rank: {{ value }}</div>
+
+            {% else %}
+
+                <div>Level: {{ value }}</div>
+
+            {% endif %}
+
+        {% endfor %}
+
+    </fieldset>
+
+    <fieldset class="card">
+
+        {% for legend, percent in top_legends.items() %}
+
+            {% if legend == 'Error' %}
+            
+                <div>Error: Not enough data</div>
+            
+            {% else %}
+
+                <div>{{ legend }}: Top {{ percent }}%</div>
+
+            {% endif %}
+        
+        {% endfor %}
+
+    </fieldset>
+
+    <fieldset class="card">
+
+        {% for metric, stat in top_stats.items() %}
+
+            {% if metric == 'Error' %}
+            
+                <div>Error: Not enough data</div>
+            
+            {% else %}
+
+                <div>{{ metric }}: {{ stat }}</div>
+
+            {% endif %}
+        
+        {% endfor %}
+
+    </fieldset>
 
 {% endblock %}

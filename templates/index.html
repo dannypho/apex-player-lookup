@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-        <fieldset>
+        <fieldset class="card">
             <h1>Welcome</h1>
             <p>
             This application displays various statistics of the searched user
@@ -33,7 +33,7 @@
                     {% endfor %}
                 </fieldset>
             </form>
-            <img src="https://cdn.freebiesupply.com/images/large/2x/apex-legends-logo-png-transparent.png" alt="Apex Legends logo">
+            <img src="https://cdn.freebiesupply.com/images/large/2x/apex-legends-logo-png-transparent.png" alt="Apex Legends logo" class="welcome_img">
         </fieldset>
         {% block body %}{% endblock %}
     </body>
