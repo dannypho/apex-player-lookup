@@ -8,7 +8,7 @@
         
             {% if key == 'rankImg' %}
 
-                <img src="{{ value }}" alt="Player's Rank">
+                <img src="{{ value }}" class="img" alt="Player's Rank">
 
             {% elif key == 'rank' %}
 
@@ -25,16 +25,19 @@
     </fieldset>
 
     <fieldset class="card">
+    <legend>Top Legends</legend>
 
-        {% for legend, percent in top_legends.items() %}
+        {% for key, value in top_legends.items() %}
 
-            {% if legend == 'Error' %}
+            {% if key == 'Error' %}
             
                 <div>Error: Not enough data</div>
             
             {% else %}
-
-                <div>{{ legend }}: Top {{ percent }}%</div>
+            <div style="display: inline-block;">
+                <div>{{ key }}: Top {{ value['topPercent'] }}%</div>
+                <img src="{{ value['icon'] }}" class="img">
+            </div>
 
             {% endif %}
         
@@ -43,6 +46,7 @@
     </fieldset>
 
     <fieldset class="card">
+    <legend>Top Stats</legend>
 
         {% for metric, stat in top_stats.items() %}
 
@@ -66,8 +70,8 @@
             <div>Success</div>
             <div>User: {{ ea_id }} on {{ selected_platform }}</div>
         </fieldset>
-    
-        <img class="banner" src="https://api.mozambiquehe.re/assets/banners/pathfinder.jpg">
+        
+        <img class="banner" src="{{ banner }}">
 
     </div>
 

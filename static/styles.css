@@ -33,6 +33,7 @@ body {
     height: 185px;
     width: 1455px;
     object-fit: cover;
+    object-position: top;
 }
 
 .success {
@@ -52,4 +53,8 @@ body {
 .footer {
     display: flex; 
     flex-direction: row;
+}
+
+.img {
+    max-width: 50%;
 }

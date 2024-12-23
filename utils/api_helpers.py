@@ -1,8 +1,8 @@
 import requests
 import json
 
-# Returns a dict of the top three highest topPercent values corresponding to the three legends
-def get_top_legends_percent(response):
+# Returns a dict of the top three highest topPercent values corresponding to the three legends along with their icon
+def get_top_legends(response):
     temp_dict = {}
     top_legends = {}
 
@@ -14,14 +14,18 @@ def get_top_legends_percent(response):
             topPercent = value['data'][0]['rank']['topPercent']
             # There is a chance the topPercent's value is a str 'NOT_CALCULATED_YET'
             if isinstance(topPercent, float):
-                temp_dict[legend] = topPercent
-    
+                # temp_dict[legend] = topPercent
+                # print(temp_dict)
+                temp_dict[legend] = {}
+                temp_dict[legend]['topPercent'] = topPercent
+                temp_dict[legend]['icon'] = legends_dictionary[legend]['ImgAssets']['icon']
+
     if len(temp_dict) < 3:
         error = {}
         error['Error'] = "Not enough data"
         return error
     else:
-        temp_list = sorted(temp_dict.items(), key=lambda x: x[1])
+        temp_list = sorted(temp_dict.items(), key=lambda x: x[1]['topPercent'])
         while len(temp_list) != 3:
             temp_list.pop()
     
@@ -61,16 +65,18 @@ def get_player_info(response):
     player_info['rankImg'] = response['global']['rank']['rankImg']
     return player_info
 
+def get_selected_banner(response):
+    selected_banner = response['legends']['selected']['ImgAssets']['banner']
+    return selected_banner
+
 def query_api(name, platform):
     API_key = 'b8f9106490e9b1ccbdebd1a26535a231'
     return requests.get(f'https://api.mozambiquehe.re/bridge?auth={API_key}&player={name}&platform={platform}').json()
 
 if __name__ == "__main__":
     
-    response = query_api("PhoDanny", "PC")
-    topPercents = get_top_legends_percent(response)
+    response = query_api("imperialhal", "PC")
+    topLegends = get_top_legends(response)
     topTotalStats = get_top_total_stats(response)
-    # print(json.dumps(topTotalStats, indent=3))
-    # print(json.dumps(get_player_info(response), indent=3))
-    print(json.dumps(response, indent=3))
+    print(json.dumps(topLegends, indent=3))
 
