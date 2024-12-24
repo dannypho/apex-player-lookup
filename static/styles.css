@@ -1,11 +1,15 @@
-h1 {
+.welcome_text {
     font-size: 60px;
 }
-p {
+.large_font {
     font-size: large;
 }
 
-fieldset {
+.welcome_card {
+    background-color: dimgrey;
+    border-color: black;
+    display: inline-block;
+    vertical-align: top;
     width: 300px;
     text-align: center;
 }
@@ -22,7 +26,7 @@ body {
     background-color: dimgrey;
     border-color: black;
     display: inline-block;
-    vertical-align: top;
+    text-align: center;
 }
 
 .welcome_img {

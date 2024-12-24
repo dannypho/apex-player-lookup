@@ -2,68 +2,70 @@
 
 {% block body %}
 
-    <fieldset class="card">
+    <div style="display: inline-block;">
 
-        {% for key, value in player_info.items() %}
-        
-            {% if key == 'rankImg' %}
+        <fieldset class="card">
 
-                <img src="{{ value }}" class="img" alt="Player's Rank">
-
-            {% elif key == 'rank' %}
-
-                <div>Rank: {{ value }}</div>
-
-            {% else %}
-
-                <div>Level: {{ value }}</div>
-
-            {% endif %}
-
-        {% endfor %}
-
-    </fieldset>
-
-    <fieldset class="card">
-    <legend>Top Legends</legend>
-
-        {% for key, value in top_legends.items() %}
-
-            {% if key == 'Error' %}
+            {% for key, value in player_info.items() %}
             
-                <div>Error: Not enough data</div>
-            
-            {% else %}
-            <div style="display: inline-block;">
-                <div>{{ key }}: Top {{ value['topPercent'] }}%</div>
-                <img src="{{ value['icon'] }}" class="img">
-            </div>
-
-            {% endif %}
-        
-        {% endfor %}
-
-    </fieldset>
-
-    <fieldset class="card">
-    <legend>Top Stats</legend>
-
-        {% for metric, stat in top_stats.items() %}
-
-            {% if metric == 'Error' %}
-            
-                <div>Error: Not enough data</div>
-            
-            {% else %}
-
-                <div>{{ metric }}: {{ stat }}</div>
-
-            {% endif %}
-        
-        {% endfor %}
-
-    </fieldset>
+                {% if key == 'rankImg' %}
     
+                    <img src="{{ value }}" class="img" alt="Player's Rank">
+    
+                {% elif key == 'rank' %}
+    
+                    <div>Rank: {{ value }}</div>
+    
+                {% else %}
+    
+                    <div>Level: {{ value }}</div>
+    
+                {% endif %}
+    
+            {% endfor %}
+    
+        </fieldset>
+    
+        <fieldset class="card">
+            {% for key, value in top_legends.items() %}
+    
+                {% if key == 'Error' %}
+                
+                    <div>Error: Not enough data</div>
+                
+                {% else %}
+                <div style="display: inline-block;">
+                    <div>{{ key }}: Top {{ value['topPercent'] }}%</div>
+                    <img src="{{ value['icon'] }}" class="img" width="335px">
+                </div>
+    
+                {% endif %}
+            
+            {% endfor %}
+    
+        </fieldset>
+        <div>
+            <fieldset class="card">
+
+                {% for metric, stat in top_stats.items() %}
+        
+                    {% if metric == 'Error' %}
+                    
+                        <div>Error: Not enough data</div>
+                    
+                    {% else %}
+        
+                        <div>{{ metric }}: {{ stat }}</div>
+        
+                    {% endif %}
+                
+                {% endfor %}
+        
+            </fieldset>
+        </div>
+
+    </div>
+
     <div class="footer">
 
         <fieldset class="card, success">
