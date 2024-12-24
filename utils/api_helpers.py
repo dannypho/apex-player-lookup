@@ -71,8 +71,9 @@ def query_api(name, platform):
 
 if __name__ == "__main__":
     
-    response = query_api("PhoDanny", "PC")
+    response = query_api("ImperialHal", "PC")
     topLegends = get_top_legends(response)
     topTotalStats = get_top_total_stats(response)
-    print(json.dumps(topLegends, indent=3))
+    playerInfo = get_player_info(response)
+    print(json.dumps(playerInfo, indent=3))
 
