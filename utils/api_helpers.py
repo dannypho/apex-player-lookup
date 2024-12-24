@@ -3,34 +3,28 @@ import json
 
 # Returns a dict of the top three highest topPercent values corresponding to the three legends along with their icon
 def get_top_legends(response):
-    temp_dict = {}
-    top_legends = {}
-
     legends_dictionary = response['legends']['all']
+    temp_list = []
 
     for legend, value in legends_dictionary.items():
-        # If you haven't played a legend in a long time, the dictionary will not have the 'data' key
-        if 'data' in value:
+        # Check if the legend has data and valid topPercent
+        if 'data' in value and isinstance(value['data'][0]['rank']['topPercent'], (float, int)):
             topPercent = value['data'][0]['rank']['topPercent']
-            # There is a chance the topPercent's value is a str 'NOT_CALCULATED_YET'
-            if isinstance(topPercent, float):
-                # temp_dict[legend] = topPercent
-                # print(temp_dict)
-                temp_dict[legend] = {}
-                temp_dict[legend]['topPercent'] = topPercent
-                temp_dict[legend]['icon'] = legends_dictionary[legend]['ImgAssets']['icon']
+            temp_list.append({
+                'legend': legend,
+                'topPercent': topPercent,
+                'icon': value['ImgAssets']['icon']
+            })
 
-    if len(temp_dict) < 3:
-        error = {}
-        error['Error'] = "Not enough data"
-        return error
-    else:
-        temp_list = sorted(temp_dict.items(), key=lambda x: x[1]['topPercent'])
-        while len(temp_list) != 3:
-            temp_list.pop()
+    # Sort legends by topPercent in ascending order
+    temp_list = sorted(temp_list, key=lambda x: x['topPercent'])
+
+    if len(temp_list) < 3:
+        return {"Error": "Not enough data"}
     
-    top_legends = dict(temp_list)
-    return top_legends
+    # Extract top three legends
+    top_legends = temp_list[:3]
+    return {legend['legend']: {'topPercent': legend['topPercent'], 'icon': legend['icon']} for legend in top_legends}
 
 # Returns a dict of the top three most important stats
 def get_top_total_stats(response):
@@ -65,17 +59,19 @@ def get_player_info(response):
     player_info['rankImg'] = response['global']['rank']['rankImg']
     return player_info
 
+# Returns a str of the player's selected legend's banner
 def get_selected_banner(response):
     selected_banner = response['legends']['selected']['ImgAssets']['banner']
     return selected_banner
 
+# Returns a dict of player data
 def query_api(name, platform):
     API_key = 'b8f9106490e9b1ccbdebd1a26535a231'
     return requests.get(f'https://api.mozambiquehe.re/bridge?auth={API_key}&player={name}&platform={platform}').json()
 
 if __name__ == "__main__":
     
-    response = query_api("imperialhal", "PC")
+    response = query_api("PhoDanny", "PC")
     topLegends = get_top_legends(response)
     topTotalStats = get_top_total_stats(response)
     print(json.dumps(topLegends, indent=3))
