@@ -15,6 +15,10 @@
                 {% elif key == 'rank' %}
     
                     <div>Rank: {{ value }}</div>
+
+                {% elif key == 'name' %}
+
+                    <div>Name: {{ value }}</div>
     
                 {% else %}
     
@@ -25,6 +29,24 @@
             {% endfor %}
     
         </fieldset>
+
+        <fieldset class="card" style="width: 180px;">
+
+            {% for key, value in selected_legend.items() %}
+
+                {% if key == 'LegendName' %}
+
+                    <div>Selected Legend: {{value }}</div>
+
+                {% else %}
+
+                    <div><img src="{{ value }}" class="img" width="335px"></div>
+                
+                {% endif %}
+            
+            {% endfor %}
+
+        </fieldset>
     
         <fieldset class="card">
             {% for key, value in top_legends.items() %}
@@ -34,7 +56,7 @@
                     <div>Error: Not enough data</div>
                 
                 {% else %}
-                <div style="display: inline-block;">
+                <div style="display: inline-block;" >
                     <div>{{ key }}: Top {{ value['topPercent'] }}%</div>
                     <img src="{{ value['icon'] }}" class="img" width="335px">
                 </div>

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from utils.api_helpers import query_api, get_player_info, get_top_legends, get_top_total_stats, get_selected_banner
+from utils.api_helpers import query_api, get_player_info, get_top_legends, get_top_total_stats, get_selected_banner, get_selected_legend
 
 app = Flask(__name__)
 
@@ -31,8 +31,9 @@ def search():
     top_legends = get_top_legends(response)
     top_stats = get_top_total_stats(response)
     banner = get_selected_banner(response)
+    selected_legend = get_selected_legend(response)
 
-    return render_template("search.html", platforms=PLATFORMS, ea_id=ea_id, selected_platform=platform, player_info=player_info, top_legends=top_legends, top_stats=top_stats, banner=banner)
+    return render_template("search.html", platforms=PLATFORMS, ea_id=ea_id, selected_platform=platform, player_info=player_info, top_legends=top_legends, top_stats=top_stats, banner=banner, selected_legend=selected_legend)
 
 if __name__ == "__main__":
     app.run(debug=True)

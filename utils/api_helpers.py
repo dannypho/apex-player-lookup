@@ -51,9 +51,10 @@ def get_top_total_stats(response):
 
     return top_total_stats
 
-# Returns a dict of the player's rank and an image of the rank
+# Returns a dict of the player's name, rank and an image of the rank
 def get_player_info(response):
     player_info = {}
+    player_info['name'] = response['global']['name']
     player_info['level'] = response['global']['level']
     player_info['rank'] = response['global']['rank']['rankName']
     player_info['rankImg'] = response['global']['rank']['rankImg']
@@ -64,6 +65,13 @@ def get_selected_banner(response):
     selected_banner = response['legends']['selected']['ImgAssets']['banner']
     return selected_banner
 
+# Returns a dict with the player's selected legend's name and correpsonding icon
+def get_selected_legend(response):
+    selected_legend = {}
+    selected_legend['LegendName'] = response['legends']['selected']['LegendName']
+    selected_legend['icon'] = response['legends']['selected']['ImgAssets']['icon']
+    return selected_legend
+
 # Returns a dict of player data
 def query_api(name, platform):
     API_key = 'b8f9106490e9b1ccbdebd1a26535a231'
@@ -71,9 +79,10 @@ def query_api(name, platform):
 
 if __name__ == "__main__":
     
-    response = query_api("ImperialHal", "PC")
+    response = query_api("awysz", "PC")
     topLegends = get_top_legends(response)
     topTotalStats = get_top_total_stats(response)
     playerInfo = get_player_info(response)
-    print(json.dumps(playerInfo, indent=3))
+    selectedLegend = get_selected_legend(response)
+    print(json.dumps(selectedLegend, indent=3))
 
