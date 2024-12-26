@@ -9,7 +9,7 @@
     background-color: dimgrey;
     border-color: black;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: bottom;
     width: 300px;
     text-align: center;
 }
@@ -27,17 +27,11 @@ body {
     border-color: black;
     display: inline-block;
     text-align: center;
+    vertical-align: top;
 }
 
 .welcome_img {
     width: 375px; 
-}
-
-.banner {
-    height: 185px;
-    width: 1455px;
-    object-fit: cover;
-    object-position: top;
 }
 
 .success {
@@ -52,11 +46,6 @@ body {
     border-color: black;
     width: 375px;
     height: 166px;
-}
-
-.footer {
-    display: flex; 
-    flex-direction: row;
 }
 
 .img {

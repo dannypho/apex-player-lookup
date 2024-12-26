@@ -1,8 +1,19 @@
 {% extends "index.html" %}
 
-{% block body %}
+{% block section1 %}
 
-    <div style="display: inline-block;">
+    <div>
+        <fieldset class="card, success" style="display: inline-block;">
+            <div>Success</div>
+            <div>User: {{ ea_id }} on {{ selected_platform }}</div>
+        </fieldset>
+    </div>
+
+{% endblock %}
+
+{% block section2 %}
+
+    <div style="display: inline-block; vertical-align: top">
 
         <fieldset class="card">
 
@@ -85,18 +96,7 @@
         
             </fieldset>
         </div>
-
-    </div>
-
-    <div class="footer">
-
-        <fieldset class="card, success">
-            <div>Success</div>
-            <div>User: {{ ea_id }} on {{ selected_platform }}</div>
-        </fieldset>
-        
-        <img class="banner" src="{{ banner }}">
-
+        <img class="banner" src="{{ banner }}" style="position: fixed; bottom: 10px">
     </div>
 
 {% endblock %}

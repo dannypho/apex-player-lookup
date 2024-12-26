@@ -7,34 +7,37 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-        <fieldset class="welcome_card">
-            <h1 class="welcome_text">Welcome</h1>
-            <p class="large_font">
-            This application displays various statistics of the searched user
-            </p>
-            <h2>How to Use:</h2>
-            <ol>
-                <li>Enter the user's EA ID in the search bar</li>
-                <li>Select the user's platform</li>
-                <li>Click the search button</li>
-            </ol>
-            <form action="/search" method="get">
-                <input type="text" id="ea_id" name="ea_id" value="{{ea_id | default('') }}" placeholder="Enter EA ID">
-                <button>Search</button>
-                <fieldset class="inner_fieldset">
+        <div style="display: inline-block;">
+            <fieldset class="welcome_card">
+                <h1 class="welcome_text">Welcome</h1>
+                <p class="large_font">
+                This application displays various statistics of the searched user
+                </p>
+                <h2>How to Use:</h2>
+                <ol>
+                    <li>Enter the user's EA ID in the search bar</li>
+                    <li>Select the user's platform</li>
+                    <li>Click the search button</li>
+                </ol>
+                <form action="/search" method="get">
+                    <input type="text" id="ea_id" name="ea_id" value="{{ea_id | default('') }}" placeholder="Enter EA ID">
+                    <button>Search</button>
+                    <fieldset class="inner_fieldset">
 
-                    <legend>Select platform</legend>
+                        <legend>Select platform</legend>
 
-                    {% for platform in platforms %}
+                        {% for platform in platforms %}
 
-                        <input type="radio" name="platform" id="{{ platform }}" value="{{ platform }}"{% if selected_platform == platform%}checked{% endif %}>
-                        <label for="{{ platform }}">{{ platform }}</label>
+                            <input type="radio" name="platform" id="{{ platform }}" value="{{ platform }}"{% if selected_platform == platform%}checked{% endif %}>
+                            <label for="{{ platform }}">{{ platform }}</label>
 
-                    {% endfor %}
-                </fieldset>
-            </form>
-            <img src="https://cdn.freebiesupply.com/images/large/2x/apex-legends-logo-png-transparent.png" alt="Apex Legends logo" class="welcome_img">
-        </fieldset>
-        {% block body %}{% endblock %}
+                        {% endfor %}
+                    </fieldset>
+                </form>
+                <img src="https://cdn.freebiesupply.com/images/large/2x/apex-legends-logo-png-transparent.png" alt="Apex Legends logo" class="welcome_img">
+            </fieldset>
+            {%block section1 %}{% endblock %}
+        </div>
+        {% block section2 %}{% endblock %}
     </body>
 </html>
