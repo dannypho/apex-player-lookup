@@ -1,102 +1,98 @@
 {% extends "index.html" %}
 
 {% block section1 %}
-
-    <div>
-        <fieldset class="card, success" style="display: inline-block;">
-            <div>Success</div>
-            <div>User: {{ ea_id }} on {{ selected_platform }}</div>
-        </fieldset>
-    </div>
+    
+    <fieldset class="success">
+        <div>Success</div>
+        <div>User: {{ ea_id }} on {{ selected_platform }}</div>
+    </fieldset>
 
 {% endblock %}
 
 {% block section2 %}
+    <fieldset class="card">
 
-    <div style="display: inline-block; vertical-align: top">
+        {% for key, value in player_info.items() %}
+        
+            {% if key == 'rankImg' %}
 
-        <fieldset class="card">
+                <img src="{{ value }}" style="width: 175px; height: 169.5px" alt="Player's Rank">
 
-            {% for key, value in player_info.items() %}
-            
-                {% if key == 'rankImg' %}
+            {% elif key == 'rank' %}
+
+                <div>Rank: {{ value }}</div>
+
+            {% elif key == 'name' %}
+
+                <div>Name: {{ value }}</div>
+
+            {% else %}
+
+                <div>Level: {{ value }}</div>
+
+            {% endif %}
+
+        {% endfor %}
+
+        {% for metric, stat in top_stats.items() %}
     
-                    <img src="{{ value }}" style="width: 175px; height: 169.5px"  style="height: 175px" alt="Player's Rank">
-    
-                {% elif key == 'rank' %}
-    
-                    <div>Rank: {{ value }}</div>
-
-                {% elif key == 'name' %}
-
-                    <div>Name: {{ value }}</div>
-    
-                {% else %}
-    
-                    <div>Level: {{ value }}</div>
-    
-                {% endif %}
-    
-            {% endfor %}
-    
-        </fieldset>
-
-        <fieldset class="card" style="width: 180px;">
-
-            {% for key, value in selected_legend.items() %}
-
-                {% if key == 'LegendName' %}
-
-                    <div>Selected Legend: {{value }}</div>
-
-                {% else %}
-
-                    <div><img src="{{ value }}" class="img" width="335px"></div>
-                
-                {% endif %}
-            
-            {% endfor %}
-
-        </fieldset>
-    
-        <fieldset class="card">
-            {% for key, value in top_legends.items() %}
-    
-                {% if key == 'Error' %}
+                {% if metric == 'Error' %}
                 
                     <div>Error: Not enough data</div>
                 
                 {% else %}
-                <div style="display: inline-block;" >
-                    <div>{{ key }}: Top {{ value['topPercent'] }}%</div>
-                    <img src="{{ value['icon'] }}" class="img" width="335px">
-                </div>
+    
+                    <div>{{ metric }}: {{ stat }}</div>
     
                 {% endif %}
             
-            {% endfor %}
+        {% endfor %}
+
+    </fieldset>
+
+    <fieldset class="card" style="width: 281.5;">
+
+        {% for key, value in selected_legend.items() %}
+
+            {% if key == 'LegendName' %}
+
+                <div>Selected Legend: {{value }}</div>
+
+            {% else %}
+
+                <div><img src="{{ value }}" class="img"></div>
+            
+            {% endif %}
+        
+        {% endfor %}
+
+    </fieldset>
+
+    <fieldset class="card">
+        {% for key, value in top_legends.items() %}
+
+            {% if key == 'Error' %}
+            
+                <div>Error: Not enough data</div>
+            
+            {% else %}
+            <div style="display: inline-block;">
+                <div>
+                    {{ key }}: Top {{ value['topPercent'] }}%
+                </div>
+                <div>
+                    <img src="{{ value['icon'] }}" class="img">
+                </div>
+            </div>
+
+            {% endif %}
+        
+        {% endfor %}
+
+    </fieldset>
     
-        </fieldset>
-        <div>
-            <fieldset class="card">
-
-                {% for metric, stat in top_stats.items() %}
-        
-                    {% if metric == 'Error' %}
-                    
-                        <div>Error: Not enough data</div>
-                    
-                    {% else %}
-        
-                        <div>{{ metric }}: {{ stat }}</div>
-        
-                    {% endif %}
-                
-                {% endfor %}
-        
-            </fieldset>
-        </div>
-        <img class="banner" src="{{ banner }}">
+    <div>
+        <img src="{{ banner }}" style="width: 1476px; margin: 5px">
     </div>
-
+   
 {% endblock %}

@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-        <div style="display: inline-block;">
+        <div style="display: inline-block; height:100%; background-color: lightblue; ">
             <fieldset class="welcome_card">
                 <h1 class="welcome_text">Welcome</h1>
                 <p class="large_font">
@@ -22,7 +22,7 @@
                 <form action="/search" method="get">
                     <input type="text" id="ea_id" name="ea_id" value="{{ea_id | default('') }}" placeholder="Enter EA ID">
                     <button>Search</button>
-                    <fieldset class="inner_fieldset">
+                    <fieldset>
 
                         <legend>Select platform</legend>
 
@@ -38,6 +38,8 @@
             </fieldset>
             {%block section1 %}{% endblock %}
         </div>
-        {% block section2 %}{% endblock %}
+        <div style="display: inline-block; vertical-align: top; width: 1486px;">
+            {% block section2 %}{% endblock %}
+        </div>
     </body>
 </html>

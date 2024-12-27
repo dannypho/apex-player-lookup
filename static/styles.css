@@ -9,13 +9,8 @@
     background-color: dimgrey;
     border-color: black;
     display: inline-block;
-    vertical-align: bottom;
     width: 300px;
     text-align: center;
-}
-
-.inner_fieldset{
-    margin: auto;
 }
 
 body {
@@ -27,7 +22,6 @@ body {
     border-color: black;
     display: inline-block;
     text-align: center;
-    vertical-align: top;
 }
 
 .welcome_img {
@@ -37,17 +31,26 @@ body {
 .success {
     background-color: green;
     border-color: black;
-    width: 375px;
-    height: 166px;
+    text-align: center;
+    height: 152px
 }
 
 .error {
     background-color: red;
     border-color: black;
-    width: 375px;
-    height: 166px;
+    text-align: center;
+    height: 152px
 }
 
 .img {
-    max-width: 50%;
+    width: 232px;
+}   
+
+fieldset {
+    margin: 5px;
+}
+
+html, body {
+    height: 100%; /* Ensure both html and body take up the full height of the viewport */
+    margin: 0; /* Remove default margins */
 }

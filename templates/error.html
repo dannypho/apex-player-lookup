@@ -1,23 +1,18 @@
 {% extends "index.html" %}
 
-{% block body %}
-
+{% block section1 %}
     {% if invalid_input %}
 
-        <div class="footer">
-
-            <fieldset class="card, error">
-                <div>Error</div>
-                <div>Please enter a valid EA ID</div>
-            </fieldset>
-
-        </div>
+        <fieldset class="error">
+            <div>Error</div>
+            <div>Please enter a valid EA ID</div>
+        </fieldset>
 
     {% endif %}
 
     {% if invalid_button %}
 
-        <div class="footer">
+        <div class="error">
 
             <fieldset class="card, error">
                 <div>Error</div>
@@ -30,14 +25,12 @@
 
     {% if invalid_user %}
         
-        <div class="footer">
 
-            <fieldset class="card, error">
-                <div>Error</div>
-                <div>User does not exist</div>
-            </fieldset>
+        <fieldset class="error">
+            <div>Error</div>
+            <div>User does not exist</div>
+        </fieldset>
 
-        </div>
 
     {% endif %}
 
