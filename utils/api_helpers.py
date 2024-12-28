@@ -56,8 +56,12 @@ def get_player_info(response):
     player_info = {}
     player_info['name'] = response['global']['name']
     player_info['level'] = response['global']['level']
-    player_info['rank'] = response['global']['rank']['rankName']
-    player_info['rankImg'] = response['global']['rank']['rankImg']
+    player_info['brRank'] = response['global']['rank']['rankName']
+    player_info['arenasRank'] = response['global']['arena']['rankName']
+    player_info['rankImg'] = {}
+    player_info['rankImg']['brRank'] = response['global']['rank']['rankImg']
+    player_info['rankImg']['arenasRank'] = response['global']['arena']['rankImg']
+    player_info['status'] = response['realtime']['currentStateAsText']
     return player_info
 
 # Returns a str of the player's selected legend's banner
@@ -84,5 +88,5 @@ if __name__ == "__main__":
     topTotalStats = get_top_total_stats(response)
     playerInfo = get_player_info(response)
     selectedLegend = get_selected_legend(response)
-    print(json.dumps(selectedLegend, indent=3))
+    print(json.dumps(playerInfo, indent=3))
 

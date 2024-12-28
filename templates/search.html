@@ -10,25 +10,35 @@
 {% endblock %}
 
 {% block section2 %}
-    <fieldset class="card">
+    <fieldset class="card" style="height: 354px;">
 
         {% for key, value in player_info.items() %}
         
             {% if key == 'rankImg' %}
-
-                <img src="{{ value }}" style="width: 175px; height: 169.5px" alt="Player's Rank">
-
-            {% elif key == 'rank' %}
-
-                <div>Rank: {{ value }}</div>
-
+                <div>
+                    <img src="{{ value['brRank'] }}" class="rank_img" alt="Player's BR Rank">
+                    <img src="{{ value['arenasRank'] }}" class="rank_img" alt="Player's Arenas Rank">
+                </div>
+            
             {% elif key == 'name' %}
 
-                <div>Name: {{ value }}</div>
+                <div class="card_text">Name: {{ value }}</div>    
 
-            {% else %}
+            {% elif key == 'level' %}
 
-                <div>Level: {{ value }}</div>
+                <div class="card_text">Level: {{ value }}</div>
+                
+            {% elif key == 'brRank' %}
+
+                <div class="card_text">BR Rank: {{ value }}</div>
+
+            {% elif key == 'arenasRank' %}
+
+                <div class="card_text">Arenas Rank: {{ value }}</div>
+
+            {% elif key == 'status' %}
+                
+                <div class="card_text">Status: {{value}}</div>
 
             {% endif %}
 
@@ -50,7 +60,7 @@
 
     </fieldset>
 
-    <fieldset class="card" style="width: 281.5;">
+    <fieldset class="card" style="height: 354px; width: 246px">
 
         {% for key, value in selected_legend.items() %}
 
@@ -60,7 +70,7 @@
 
             {% else %}
 
-                <div><img src="{{ value }}" class="img"></div>
+                <div><img src="{{ value }}" class="legend_img"></div>
             
             {% endif %}
         
@@ -68,7 +78,7 @@
 
     </fieldset>
 
-    <fieldset class="card">
+    <fieldset class="card" style="height: 354px; width: 746px">
         {% for key, value in top_legends.items() %}
 
             {% if key == 'Error' %}
@@ -81,7 +91,7 @@
                     {{ key }}: Top {{ value['topPercent'] }}%
                 </div>
                 <div>
-                    <img src="{{ value['icon'] }}" class="img">
+                    <img src="{{ value['icon'] }}" class="legend_img">
                 </div>
             </div>
 
@@ -92,7 +102,7 @@
     </fieldset>
     
     <div>
-        <img src="{{ banner }}" style="width: 1476px; margin: 5px">
+        <img src="{{ banner }}" class="banner" alt="An Image of the player's selected Legend. Currently, Alter's image does not load when called from the API">
     </div>
    
 {% endblock %}

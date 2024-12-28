@@ -22,6 +22,7 @@ body {
     border-color: black;
     display: inline-block;
     text-align: center;
+    vertical-align: top;
 }
 
 .welcome_img {
@@ -42,8 +43,9 @@ body {
     height: 152px
 }
 
-.img {
-    width: 232px;
+.legend_img {
+    width: 246px;
+
 }   
 
 fieldset {
@@ -53,4 +55,20 @@ fieldset {
 html, body {
     height: 100%; /* Ensure both html and body take up the full height of the viewport */
     margin: 0; /* Remove default margins */
+}
+
+.rank_img {
+    width: 180px; 
+    height: 169.5px;
+    display: inline-block;
+    padding: 2px;
+}
+
+.card_text {
+    padding: 2px;
+}
+
+.banner {
+    width: 1476px; 
+    margin: 5px; 
 }

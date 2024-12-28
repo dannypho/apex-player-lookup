@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 
 {% block section1 %}
+
     {% if invalid_input %}
 
         <fieldset class="error">
@@ -12,25 +13,19 @@
 
     {% if invalid_button %}
 
-        <div class="error">
-
-            <fieldset class="card, error">
-                <div>Error</div>
-                <div>Please select a platform</div>
-            </fieldset>
-
-        </div>
+        <fieldset class="card, error">
+            <div>Error</div>
+            <div>Please select a platform</div>
+        </fieldset>
 
     {% endif %}
 
     {% if invalid_user %}
         
-
         <fieldset class="error">
             <div>Error</div>
             <div>User does not exist</div>
         </fieldset>
-
 
     {% endif %}
 
