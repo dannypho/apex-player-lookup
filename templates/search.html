@@ -12,7 +12,7 @@
 {% block section2 %}
     <fieldset class="card" style="height: 354px;">
 
-        {% for key, value in player_info.items() %}
+        {% for key, value in data['player_info'].items() %}
         
             {% if key == 'rankImg' %}
                 <div>
@@ -44,7 +44,7 @@
 
         {% endfor %}
 
-        {% for metric, stat in top_stats.items() %}
+        {% for metric, stat in data['top_stats'].items() %}
     
                 {% if metric == 'Error' %}
                 
@@ -62,7 +62,7 @@
 
     <fieldset class="card" style="height: 354px; width: 246px">
 
-        {% for key, value in selected_legend.items() %}
+        {% for key, value in data['selected_legend'].items() %}
 
             {% if key == 'LegendName' %}
 
@@ -79,7 +79,7 @@
     </fieldset>
 
     <fieldset class="card" style="height: 354px; width: 746px">
-        {% for key, value in top_legends.items() %}
+        {% for key, value in data['top_legends'].items() %}
 
             {% if key == 'Error' %}
             
@@ -102,7 +102,7 @@
     </fieldset>
     
     <div>
-        <img src="{{ banner }}" class="banner" alt="An Image of the player's selected Legend. Currently, Alter's image does not load when called from the API">
+        <img src="{{ data['banner'] }}" class="banner" alt="An Image of the player's selected Legend. Currently, Alter's image does not load when called from the API">
     </div>
    
 {% endblock %}

@@ -82,11 +82,4 @@ def query_api(name, platform):
     return requests.get(f'https://api.mozambiquehe.re/bridge?auth={API_key}&player={name}&platform={platform}').json()
 
 if __name__ == "__main__":
-    
-    response = query_api("awysz", "PC")
-    topLegends = get_top_legends(response)
-    topTotalStats = get_top_total_stats(response)
-    playerInfo = get_player_info(response)
-    selectedLegend = get_selected_legend(response)
-    print(json.dumps(playerInfo, indent=3))
-
+    pass

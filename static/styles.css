@@ -53,8 +53,8 @@ fieldset {
 }
 
 html, body {
-    height: 100%; /* Ensure both html and body take up the full height of the viewport */
-    margin: 0; /* Remove default margins */
+    height: 100%;
+    margin: 0;
 }
 
 .rank_img {

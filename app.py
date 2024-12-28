@@ -27,14 +27,14 @@ def search():
     if 'Error' in response:
         return render_template("error.html", platforms=PLATFORMS, ea_id=ea_id, selected_platform=platform, invalid_user=True)
     
-    player_info = get_player_info(response)
-    top_legends = get_top_legends(response)
-    top_stats = get_top_total_stats(response)
-    banner = get_selected_banner(response)
-    selected_legend = get_selected_legend(response)
+    data = {}    
+    data['player_info'] = get_player_info(response)
+    data['top_legends'] = get_top_legends(response)
+    data['top_stats'] = get_top_total_stats(response)
+    data['banner'] = get_selected_banner(response)
+    data['selected_legend'] = get_selected_legend(response)
 
-    return render_template("search.html", platforms=PLATFORMS, ea_id=ea_id, selected_platform=platform, player_info=player_info, top_legends=top_legends, top_stats=top_stats, banner=banner, selected_legend=selected_legend)
-
+    return render_template("search.html", platforms=PLATFORMS, ea_id=ea_id, selected_platform=platform, data=data)
 if __name__ == "__main__":
     app.run(debug=True)
 
