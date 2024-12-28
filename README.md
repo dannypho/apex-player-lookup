@@ -27,3 +27,9 @@ A web application to search for an Apex Legends player by their EA ID and platfo
 * CSS3: For styling the pages.
 
 * Jinja2 Templating: To dynamically display user data.
+
+## Screenshots
+
+![image](https://github.com/user-attachments/assets/2e882729-4397-4060-8510-f6aee160a21f)
+![image](https://github.com/user-attachments/assets/e08851d6-bc80-43ba-a8c7-2753cdecb6f2)
+
